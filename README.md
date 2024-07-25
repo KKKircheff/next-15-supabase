@@ -14,3 +14,8 @@ npx supabase init
 
 npx supabase start
 npx supabase stop
+
+## auth
+
+npm install @supabase/supabase-js
+npm install @supabase/ssr
