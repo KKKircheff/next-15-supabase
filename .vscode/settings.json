@@ -8,7 +8,7 @@
     "editor.defaultFormatter": "denoland.vscode-deno"
 },
 "spellright.language": [
-    "nl"
+    "en"
 ],
 "spellright.documentTypes": [
     "markdown",
