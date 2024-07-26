@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.4.0",
+    "@supabase/supabase-js": "^2.44.4",
     "babel-plugin-react-compiler": "^0.0.0-experimental-696af53-20240625",
     "next": "15.0.0-rc.0",
     "react": "19.0.0-rc-f994737d14-20240522",
