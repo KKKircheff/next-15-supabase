@@ -1,6 +1,6 @@
 import Step from "./Step";
-
 import React from "react";
+
 export default function ConnectSupabaseSteps() {
     return (
         <ol style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -41,7 +41,6 @@ export default function ConnectSupabaseSteps() {
                     .
                 </p>
             </Step>
-
             <Step title="Restart your Next.js development server">
                 <p>
                     You may need to quit your Next.js development server and run{" "}
