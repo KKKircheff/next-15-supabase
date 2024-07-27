@@ -48,52 +48,53 @@ export default function Page() {
 `.trim();
 
 export default function FetchDataSteps() {
-  return (
-    <ol className="flex flex-col gap-6">
-      <Step title="Create some tables and insert some data">
-        <p>
-          Head over to the{" "}
-          <a
-            href="https://supabase.com/dashboard/project/_/editor"
-            className="font-bold hover:underline text-foreground/80"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Table Editor
-          </a>{" "}
-          for your Supabase project to create a table and insert some example
-          data. If you're stuck for creativity, you can copy and paste the
-          following into the{" "}
-          <a
-            href="https://supabase.com/dashboard/project/_/sql/new"
-            className="font-bold hover:underline text-foreground/80"
-            target="_blank"
-            rel="noreferrer"
-          >
-            SQL Editor
-          </a>{" "}
-          and click RUN!
-        </p>
-        <Code code={create} />
-      </Step>
+    return (
+        <ol style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <Step title="Create some tables and insert some data">
+                <p>
+                    Head over to the{" "}
+                    <a
+                        href="https://supabase.com/dashboard/project/_/editor"
+                        style={{ fontWeight: 'bold', color: 'rgba(31, 41, 55, 0.8)', textDecoration: 'underline' }}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Table Editor
+                    </a>{" "}
+                    for your Supabase project to create a table and insert some example
+                    data. If you're stuck for creativity, you can copy and paste the
+                    following into the{" "}
+                    <a
+                        href="https://supabase.com/dashboard/project/_/sql/new"
+                        style={{ fontWeight: 'bold', color: 'rgba(31, 41, 55, 0.8)', textDecoration: 'underline' }}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        SQL Editor
+                    </a>{" "}
+                    and click RUN!
+                </p>
+                <Code code={create} />
+            </Step>
 
-      <Step title="Query Supabase data from Next.js">
-        <p>
-          To create a Supabase client and query data from an Async Server
-          Component, create a new page.tsx file at{" "}
-          <span className="px-2 py-1 rounded-md bg-foreground/20 text-foreground/80">
-            /app/notes/page.tsx
-          </span>{" "}
-          and add the following.
-        </p>
-        <Code code={server} />
-        <p>Alternatively, you can use a Client Component.</p>
-        <Code code={client} />
-      </Step>
+            <Step title="Query Supabase data from Next.js">
+                <p>
+                    To create a Supabase client and query data from an Async Server
+                    Component, create a new page.tsx file at{" "}
+                    <span style={{ padding: '0.25rem 0.5rem', borderRadius: '0.375rem', backgroundColor: 'rgba(31, 41, 55, 0.2)', color: 'rgba(31, 41, 55, 0.8)' }}>
+                        /app/notes/page.tsx
+                    </span>{" "}
+                    and add the following.
+                </p>
+                <Code code={server} />
+                <p>Alternatively, you can use a Client Component.</p>
+                <Code code={client} />
+            </Step>
 
-      <Step title="Build in a weekend and scale to millions!">
-        <p>You're ready to launch your product to the world! 🚀</p>
-      </Step>
-    </ol>
-  );
+            <Step title="Build in a weekend and scale to millions!">
+                <p>You're ready to launch your product to the world! 🚀</p>
+            </Step>
+        </ol>
+    );
 }
+

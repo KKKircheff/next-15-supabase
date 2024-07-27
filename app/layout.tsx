@@ -17,8 +17,8 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="bg-background text-foreground">
-                <main className="min-h-screen flex flex-col items-center">
+            <body style={{ background: "#f9fafb", color: "#1f2937" }}>
+                <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
                     {children}
                 </main>
             </body>

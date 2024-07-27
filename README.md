@@ -23,16 +23,21 @@ npx supabase upgrade
             /* it creates next.js 14 project
             /* I just use auth components and flow in next 15 project ( copy needed) 
             /* then deleted next.js 14 project       
-            /* rename ,env.example to .env in the root folder       
+            /* create .env file in the root folder an paste inside:
+                NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+                NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+      
 
 npx supabase start 
             /* Start the CLI
-            /* copi API and ANON keys that you will see in your terminal after supabase starts successfuly
-            /* paste the values in .env
+            /* copy API and ANON keys that you will see in your terminal after supabase starts successfuly
+            /* paste the values in .env for the corresponding keys
                           
 ## auth
 
 npm install @supabase/supabase-js
 npm install @supabase/ssr
 
-          /* then run dev server in new terminal with 'npm run dev' - Ready!!!      
+## Latest Supabase with NextJs Auth changes on:
+        /* https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware&queryGroups=package-manager&package-manager=pnpm
+        /* then run dev server in new terminal with 'npm run dev' - Ready!!!      

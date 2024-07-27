@@ -3,35 +3,49 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function AuthButton() {
-  const supabase = createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  const signOut = async () => {
-    "use server";
-
     const supabase = createClient();
-    await supabase.auth.signOut();
-    return redirect("/login");
-  };
 
-  return user ? (
-    <div className="flex items-center gap-4">
-      Hey, {user.email}!
-      <form action={signOut}>
-        <button className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover">
-          Logout
-        </button>
-      </form>
-    </div>
-  ) : (
-    <Link
-      href="/login"
-      className="py-2 px-3 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
-    >
-      Login
-    </Link>
-  );
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
+
+    const signOut = async () => {
+        "use server";
+
+        const supabase = createClient();
+        await supabase.auth.signOut();
+        return redirect("/login");
+    };
+
+    return user ? (
+        <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem'
+        }}>
+            Hey, {user.email}!
+            <form action={signOut}>
+                <button style={{
+                    padding: '0.5rem 1rem',
+                    borderRadius: '0.5rem',
+                    textDecoration: 'none',
+                    backgroundColor: 'your-btn-background-color',
+                }}>
+                    Logout
+                </button>
+            </form>
+        </div>
+    ) : (
+        <Link
+            href="/login"
+            style={{
+                padding: '0.5rem 0.75rem',
+                borderRadius: '0.5rem',
+                textDecoration: 'none',
+                backgroundColor: 'your-btn-background-color',
+            }}
+        >
+            Login
+        </Link>
+    );
 }

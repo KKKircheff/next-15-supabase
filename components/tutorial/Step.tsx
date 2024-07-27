@@ -1,24 +1,35 @@
 export default function Step({
-  title,
-  children,
+    title,
+    children,
 }: {
-  title: string;
-  children: React.ReactNode;
+    title: string;
+    children: React.ReactNode;
 }) {
-  return (
-    <li className="mx-4">
-      <input type="checkbox" id={title} className={`mr-2 peer`} />
-      <label
-        htmlFor={title}
-        className={`text-lg text-foreground/90 peer-checked:line-through font-semibold hover:cursor-pointer`}
-      >
-        {title}
-      </label>
-      <div
-        className={`mx-6 text-foreground/80 text-sm peer-checked:line-through`}
-      >
-        {children}
-      </div>
-    </li>
-  );
+    return (
+        <li style={{ margin: '0 1rem' }}>
+            <input type="checkbox" id={title} style={{ marginRight: '0.5rem' }} className="peer" />
+            <label
+                htmlFor={title}
+                style={{
+                    fontSize: '1.125rem',
+                    color: 'rgba(31, 41, 55, 0.9)',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                }}
+                className="peer-checked:line-through"
+            >
+                {title}
+            </label>
+            <div
+                style={{
+                    margin: '0 1.5rem',
+                    color: 'rgba(31, 41, 55, 0.8)',
+                    fontSize: '0.875rem',
+                }}
+                className="peer-checked:line-through"
+            >
+                {children}
+            </div>
+        </li>
+    );
 }

@@ -1,17 +1,17 @@
-{
-  "deno.enablePaths": [
-    "supabase/functions"
-  ],
-  "deno.lint": true,
-  "deno.unstable": true,
-  "[typescript]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
-},
-"spellright.language": [
-    "en"
-],
-"spellright.documentTypes": [
-    "markdown",
-    "latex"
-]
-}
+// {
+//   "deno.enablePaths": [
+//     "supabase/functions"
+//   ],
+//   "deno.lint": true,
+//   "deno.unstable": true,
+//   "[typescript]": {
+//     "editor.defaultFormatter": "denoland.vscode-deno"
+// },
+// "spellright.language": [
+//     "en"
+// ],
+// "spellright.documentTypes": [
+//     "markdown",
+//     "latex"
+// ]
+// }

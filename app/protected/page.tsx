@@ -6,52 +6,51 @@ import Header from "@/components/Header";
 import { redirect } from "next/navigation";
 
 export default async function ProtectedPage() {
-  const supabase = createClient();
+    const supabase = createClient();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
 
-  if (!user) {
-    return redirect("/login");
-  }
+    if (!user) {
+        return redirect("/login");
+    }
 
-  return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center">
-      <div className="w-full">
-        <div className="py-6 font-bold bg-purple-950 text-center">
-          This is a protected page that you can only see as an authenticated
-          user
+    return (
+        <div style={{ flex: 1, width: '100%', display: 'flex', flexDirection: 'column', gap: '5rem', alignItems: 'center' }}>
+            <div style={{ width: '100%' }}>
+                <div style={{ padding: '1.5rem', fontWeight: 'bold', backgroundColor: '#5b21b6', textAlign: 'center', color: 'white' }}>
+                    This is a protected page that you can only see as an authenticated user
+                </div>
+                <nav style={{ width: '100%', display: 'flex', justifyContent: 'center', borderBottom: '1px solid rgba(31, 41, 55, 0.1)', height: '4rem' }}>
+                    <div style={{ width: '100%', maxWidth: '64rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem', fontSize: '0.875rem' }}>
+                        <DeployButton />
+                        <AuthButton />
+                    </div>
+                </nav>
+            </div>
+
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '5rem', maxWidth: '64rem', padding: '0.75rem' }}>
+                <Header />
+                <main style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    <h2 style={{ fontWeight: 'bold', fontSize: '2.25rem', marginBottom: '1rem' }}>Next steps</h2>
+                    <FetchDataSteps />
+                </main>
+            </div>
+
+            <footer style={{ width: '100%', borderTop: '1px solid rgba(31, 41, 55, 0.1)', padding: '2rem', display: 'flex', justifyContent: 'center', textAlign: 'center', fontSize: '0.75rem' }}>
+                <p>
+                    Powered by{" "}
+                    <a
+                        href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
+                        target="_blank"
+                        style={{ fontWeight: 'bold', textDecoration: 'underline' }}
+                        rel="noreferrer"
+                    >
+                        Supabase
+                    </a>
+                </p>
+            </footer>
         </div>
-        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-          <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-            <DeployButton />
-            <AuthButton />
-          </div>
-        </nav>
-      </div>
-
-      <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
-        <Header />
-        <main className="flex-1 flex flex-col gap-6">
-          <h2 className="font-bold text-4xl mb-4">Next steps</h2>
-          <FetchDataSteps />
-        </main>
-      </div>
-
-      <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
-        <p>
-          Powered by{" "}
-          <a
-            href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
-          >
-            Supabase
-          </a>
-        </p>
-      </footer>
-    </div>
-  );
+    );
 }

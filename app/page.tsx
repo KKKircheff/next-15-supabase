@@ -21,10 +21,35 @@ export default async function Index() {
     console.log('IS:', isSupabaseConnected);
 
     return (
-        <div className="flex-1 w-full flex flex-col gap-20 items-center">
-            <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-                <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-                    <DeployButton />
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "20px",
+            }}
+        >
+            <nav
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    borderBottom: "1px solid rgba(33, 37, 41, 0.1)",
+                    height: "56px",
+                }}
+            >
+                <div
+                    style={{
+                        width: "100%",
+                        maxWidth: "4xl",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "15px",
+                        boxSizing: "border-box",
+                        fontSize: "14px",
+                    }}
+                >      <DeployButton />
                     {isSupabaseConnected && <AuthButton />}
                 </div>
             </nav>
