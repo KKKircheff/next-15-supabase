@@ -6,17 +6,35 @@
 
 npm create next-app@rc --turbo
 npm install babel-plugin-react-compiler
-npm install supabase@1.30.0 --save-dev 
-
-            /* With version 1.30.0 works
-            /* https://supabase.com/docs/guides/cli
-
+npm install supabase --save-dev 
 npx supabase init
-npx supabase start
+npx supabase@beta start
+            /* start containers in Docker - *temp* working version otherwise crash
+
+npx supabase start 
+            /* Start containers in Docker. *Currently not working. Use upper start option*
+            /* copy API and ANON keys that you will see in your terminal after supabase starts successfuly
+            /* paste the values in .env for the corresponding keys
+            /* for embeddings enable *vector extension*
+
+npx supabase link
+            /* This will give the links to Supabase project
+npx supabase login
+
 npx supabase stop
-            /* Then delete supabase doker images and voulumes                       
+              /* stops containers in docker           
 npx supabase upgrade
             /* This will upgrade Supabase CLI to the latest version                 
+npx supabase migration up
+            /* This will set the migration in local db                
+npx supabase db push 
+            /* This will set the migration in remote db  
+npx supabase migration new [migration_name]             
+
+
+
+
+
 
             /* I installed in separate folder outside the proect supabase with next.js template like:
             npm create next-app@lates with-supabase
@@ -28,10 +46,7 @@ npx supabase upgrade
                 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
       
 
-npx supabase start 
-            /* Start the CLI
-            /* copy API and ANON keys that you will see in your terminal after supabase starts successfuly
-            /* paste the values in .env for the corresponding keys
+
                           
 ## auth
 
