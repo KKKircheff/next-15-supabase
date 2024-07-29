@@ -1,4 +1,5 @@
 import "./globals.css";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -10,17 +11,13 @@ export const metadata = {
     description: "The fastest way to build apps with Next.js and Supabase",
 };
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+export default function RootLayout(props: any) {
     return (
         <html lang="en">
-            <body style={{ background: "#f9fafb", color: "#1f2937" }}>
-                <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    {children}
-                </main>
+            <body>
+                +        <AppRouterCacheProvider>
+                    {props.children}
+                    +        </AppRouterCacheProvider>
             </body>
         </html>
     );

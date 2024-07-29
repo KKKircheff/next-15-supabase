@@ -9,6 +9,11 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@emotion/cache": "^11.13.1",
+        "@emotion/react": "^11.13.0",
+        "@emotion/styled": "^11.13.0",
+        "@mui/material": "^5.16.5",
+        "@mui/material-nextjs": "^5.16.4",
         "@supabase/ssr": "^0.4.0",
         "@supabase/supabase-js": "^2.44.4",
         "babel-plugin-react-compiler": "^0.0.0-experimental-696af53-20240625",
