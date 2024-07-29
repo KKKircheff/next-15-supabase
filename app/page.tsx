@@ -4,6 +4,8 @@ import { createClient } from "@/utils/supabase/server";
 import ConnectSupabaseSteps from "@/components/tutorial/ConnectSupabaseSteps";
 import SignUpUserSteps from "@/components/tutorial/SignUpUserSteps";
 import Header from "@/components/Header";
+import { Button, FormControl, FormLabel, Input, Sheet, Typography } from "@mui/joy";
+import Link from "next/dist/client/link";
 
 export default async function Index() {
     const canInitSupabaseClient = () => {
@@ -21,62 +23,53 @@ export default async function Index() {
     console.log('IS:', isSupabaseConnected);
 
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "20px",
+        <Sheet
+            sx={{
+                display: 'flex',
+                flexFlow: 'row nowrap',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '100vh',
             }}
         >
-            <nav
-                style={{
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    borderBottom: "1px solid rgba(33, 37, 41, 0.1)",
-                    height: "56px",
+            <Sheet
+                sx={{
+                    width: 300,
+                    mx: 'auto',
+                    my: 4,
+                    py: 3,
+                    px: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 2,
+                    borderRadius: 'sm',
+                    boxShadow: 'md',
                 }}
+                variant="outlined"
             >
-                <div
-                    style={{
-                        width: "100%",
-                        maxWidth: "4xl",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        padding: "15px",
-                        boxSizing: "border-box",
-                        fontSize: "14px",
-                    }}
-                >      <DeployButton />
-                    {isSupabaseConnected && <AuthButton />}
+                <div>
+                    <Typography level="h4" component="h1">
+                        <strong>Welcome back 👋</strong>
+                    </Typography>
+                    <Typography level="body-sm">Sign in to continue.</Typography>
                 </div>
-            </nav>
-
-            <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
-                <Header />
-                <main className="flex-1 flex flex-col gap-6">
-                    <h2 className="font-bold text-4xl mb-4">Next steps</h2>
-                    {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-                </main>
-            </div>
-
-            <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
-                <p>
-                    Powered by{" "}
-                    <a
-                        href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-                        target="_blank"
-                        className="font-bold hover:underline"
-                        rel="noreferrer"
-                    >
-                        Supabase
-                    </a>
-                </p>
-            </footer>
-        </div>
+                <FormControl id="email">
+                    <FormLabel>Email</FormLabel>
+                    <Input name="email" type="email" placeholder="johndoe@email.com" />
+                </FormControl>
+                <FormControl id="password">
+                    <FormLabel>Password</FormLabel>
+                    <Input name="password" type="password" placeholder="password" />
+                </FormControl>
+                <Button sx={{ mt: 1 }}>Log in</Button>
+                <Typography
+                    endDecorator={<Link href="/sign-up">Sign up</Link>}
+                    fontSize="sm"
+                    sx={{ alignSelf: 'center' }}
+                >
+                    Don&apos;t have an account?
+                </Typography>
+            </Sheet>
+        </Sheet>
     );
 }
-
-

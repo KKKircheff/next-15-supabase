@@ -9,6 +9,10 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@emotion/react": "^11.13.0",
+        "@emotion/styled": "^11.13.0",
+        "@fontsource/inter": "^5.0.19",
+        "@mui/joy": "^5.0.0-beta.48",
         "@supabase/ssr": "^0.4.0",
         "@supabase/supabase-js": "^2.44.4",
         "babel-plugin-react-compiler": "^0.0.0-experimental-696af53-20240625",
