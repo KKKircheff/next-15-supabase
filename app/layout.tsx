@@ -1,6 +1,7 @@
 import * as React from 'react';
 import "./globals.css";
 import ThemeRegistry from '@/utils/joy-ui/ThemeRegistry';
+import Header from '@/components/Header';
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -20,7 +21,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <ThemeRegistry>{children}</ThemeRegistry>
+                <ThemeRegistry>
+                    <Header />
+                    {children}
+                </ThemeRegistry>
             </body>
         </html>
     );

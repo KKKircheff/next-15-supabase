@@ -32,6 +32,7 @@ npx supabase login
 npx supabase stop
               /* stops containers in docker           
 npx supabase upgrade
+npm update supabase --save-dev
             /* This will upgrade Supabase CLI to the latest version             
 
 npx supabase db diff --use-migra -f initial_schema
@@ -50,7 +51,10 @@ more info *https://supabase.com/docs/reference/cli/supabase-gen-types*
                 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
                 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
       
+Joy UI setings from link below:
+https://github.com/mui/material-ui/tree/master/examples/joy-ui-nextjs-ts
 
+npm install @mui/joy @emotion/react @emotion/styled --legacy-peer-deps
 
                           
 ## auth
@@ -69,3 +73,5 @@ https://blog.logrocket.com/structure-scalable-next-js-project-architecture/
 https://github.com/supabase-community/chatgpt-your-files/blob/main/README.md
 
 https://supabase.com/docs/reference/cli/supabase-gen-type
+
+https://github.com/mui/material-ui/tree/master/examples/joy-ui-nextjs-ts
