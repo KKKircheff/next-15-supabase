@@ -6,6 +6,10 @@
 
 npm create next-app@rc --turbo
 npm install babel-plugin-react-compiler
+npm install server-only
+    /* ensures component is a server component - error if not
+    /* usage: import 'server-only' *Don't use it in app/page.tsx*
+
 npm install supabase --save-dev 
 npx supabase init
 npx supabase@beta start
@@ -31,7 +35,7 @@ npx supabase login
 
 npx supabase stop
               /* stops containers in docker           
-npx supabase upgrade
+npx supabase upgrade ???
 npm update supabase --save-dev
             /* This will upgrade Supabase CLI to the latest version             
 

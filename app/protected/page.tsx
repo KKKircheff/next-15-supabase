@@ -3,6 +3,7 @@ import AuthButton from "@/components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
 import { redirect } from "next/navigation";
+import 'server-only'
 
 export default async function ProtectedPage() {
     const supabase = createClient();

@@ -1,29 +1,9 @@
 import SignOutButton from "@/components/SignOutButton";
 import { createClient } from "@/utils/supabase/server";
-import { Button, Sheet, Stack, Typography } from "@mui/joy";
-import { redirect } from "next/navigation";
-import { userAgent } from "next/server";
-
+import { Sheet, Stack, Typography } from "@mui/joy";
 export default async function Index() {
-
-    const canInitSupabaseClient = async () => {
-        // This function is just for the interactive tutorial.
-        // Feel free to remove it once you have Supabase connected.
-        try {
-            return user;
-        } catch (e) {
-            return undefined;
-        }
-    };
-
     const supabase = createClient();
     const { data: { user }, } = await supabase.auth.getUser()
-
-    const signOut = async () => {
-        "use server";
-        await supabase.auth.signOut();
-        return redirect("/");
-    };
 
     return (
         <Sheet

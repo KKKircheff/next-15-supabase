@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { FormControl, FormLabel, Input, Sheet, Stack, Typography } from "@mui/joy";
 import AuthButton from "@/components/AuthButton";
 import { SubmitButton } from "@/components/SubmitButton";
-
+import 'server-only'
 export default function Login({
     searchParams,
 }: {
