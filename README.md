@@ -12,8 +12,8 @@ npm install server-only
 
 npm install supabase --save-dev 
 npx supabase init
-npx supabase@beta start
-            /* start containers in Docker - *temp* working version otherwise crash
+/* npx supabase@beta start
+            /* start containers in Docker - *temp* working version otherwise crash *-fixed use normal command*
 
 npx supabase start 
             /* Start containers in Docker. *Currently not working. Use upper start option*
