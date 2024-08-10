@@ -9,11 +9,13 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "@emotion/cache": "latest",
-        "@emotion/react": "latest",
-        "@emotion/styled": "latest",
+        "@emotion/cache": "^11.13.1",
+        "@emotion/react": "^11.13.0",
+        "@emotion/styled": "^11.13.0",
         "@fontsource/inter": "^5.0.19",
-        "@mui/joy": "latest",
+        "@fontsource/roboto": "^5.0.14",
+        "@mui/material": "^5.16.7",
+        "@mui/material-nextjs": "^5.16.6",
         "@supabase/ssr": "^0.4.0",
         "@supabase/supabase-js": "^2.44.4",
         "babel-plugin-react-compiler": "^0.0.0-experimental-696af53-20240625",

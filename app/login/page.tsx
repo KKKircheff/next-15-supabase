@@ -3,9 +3,9 @@ import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "../../components/buttons/SubmitButton";
-import { Button, FormControl, FormLabel, Input, Sheet, Stack, Typography } from "@mui/joy";
 import AuthButton from "@/components/buttons/AuthButton";
 import 'server-only'
+import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";
 
 
 export default function Login({
@@ -58,7 +58,7 @@ export default function Login({
     return (
         <Stack>
             <form>
-                <Sheet
+                <Paper
                     sx={{
                         display: 'flex',
                         flexFlow: 'row nowrap',
@@ -67,7 +67,7 @@ export default function Login({
                         minHeight: '100vh',
                     }}
                 >
-                    <Sheet
+                    <Paper
                         sx={{
                             width: 300,
                             mx: 'auto', my: 4, py: 3, px: 2,
@@ -79,10 +79,10 @@ export default function Login({
                         variant="outlined"
                     >
                         <Stack>
-                            <Typography level="h4" component="h1">
+                            <Typography variant="h4" component="h1">
                                 <strong>Welcome back 👋</strong>
                             </Typography>
-                            <Typography level="body-sm">Sign in to continue.</Typography>
+                            <Typography variant="subtitle1">Sign in to continue.</Typography>
                         </Stack>
 
                         <FormControl id="email">
@@ -106,14 +106,13 @@ export default function Login({
                             </p>
                         )}
                         <Typography
-                            endDecorator={<Link href="/sign-up">Sign up</Link>}
-                            fontSize="sm"
+                            fontSize='sm'
                             sx={{ alignSelf: 'center' }}
                         >
-                            Don&apos;t have an account?
+                            Don&apos;t have an account? <Link href="/sign-up">Sign up</Link>
                         </Typography>
-                    </Sheet>
-                </Sheet>
+                    </Paper>
+                </Paper>
             </form >
         </Stack>
     );

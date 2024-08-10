@@ -55,10 +55,7 @@ more info *https://supabase.com/docs/reference/cli/supabase-gen-types*
                 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
                 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
       
-Joy UI setings from link below:
-https://github.com/mui/material-ui/tree/master/examples/joy-ui-nextjs-ts
 
-npm install @mui/joy @emotion/react @emotion/styled --legacy-peer-deps
                           
 ## auth
 
@@ -66,7 +63,11 @@ npm install @supabase/supabase-js
 npm install @supabase/ssr
 
 npm install zod
-npm install server-only --legacy-peer-deps
+npm install server-only
+
+npm install @mui/material @emotion/react @emotion/styled --legacy-peer-deps
+npm install @mui/material-nextjs @emotion/cache --legacy-peer-deps
+npm install @fontsource/roboto --legacy-peer-deps
 
 ## Latest Supabase with NextJs Auth changes on:
         /* https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware&queryGroups=package-manager&package-manager=pnpm
