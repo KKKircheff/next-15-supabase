@@ -1,5 +1,11 @@
 {
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex"
+    ] 
 } // {
 //   "deno.enablePaths": [
 //     "supabase/functions"
@@ -16,4 +22,5 @@
 //     "markdown",
 //     "latex"
 // ]
+//  "typescript.tsdk": "node_modules\\typescript\\lib"
 // }

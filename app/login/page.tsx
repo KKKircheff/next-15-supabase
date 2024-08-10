@@ -2,7 +2,11 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { SubmitButton } from "./submit-button";
+import { SubmitButton } from "../../components/buttons/SubmitButton";
+import { Button, FormControl, FormLabel, Input, Sheet, Stack, Typography } from "@mui/joy";
+import AuthButton from "@/components/buttons/AuthButton";
+import 'server-only'
+
 
 export default function Login({
     searchParams,
@@ -52,106 +56,65 @@ export default function Login({
     };
 
     return (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%', padding: '2rem', maxWidth: '28rem', justifyContent: 'center', gap: '0.5rem' }}>
-            <Link
-                href="/"
-                style={{
-                    position: 'absolute',
-                    left: '2rem',
-                    top: '2rem',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '0.375rem',
-                    textDecoration: 'none',
-                    color: 'currentColor', // Assuming text-foreground is similar to text color
-                    backgroundColor: 'var(--btn-background)', // Assuming bg-btn-background is defined in your CSS variables
-                    display: 'flex',
-                    alignItems: 'center',
-                    fontSize: '0.875rem',
-                }}
-                className="group"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    style={{ marginRight: '0.5rem', height: '1rem', width: '1rem', transition: 'transform 0.2s' }}
-                    className="group-hover:transform group-hover:translate-x-[-0.25rem]"
+        <Stack>
+            <form>
+                <Sheet
+                    sx={{
+                        display: 'flex',
+                        flexFlow: 'row nowrap',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        minHeight: '100vh',
+                    }}
                 >
-                    <polyline points="15 18 9 12 15 6" />
-                </svg>{" "}
-                Back
-            </Link>
+                    <Sheet
+                        sx={{
+                            width: 300,
+                            mx: 'auto', my: 4, py: 3, px: 2,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: 2,
+                            borderRadius: 'lg', boxShadow: 'md',
+                        }}
+                        variant="outlined"
+                    >
+                        <Stack>
+                            <Typography level="h4" component="h1">
+                                <strong>Welcome back 👋</strong>
+                            </Typography>
+                            <Typography level="body-sm">Sign in to continue.</Typography>
+                        </Stack>
 
-            <form style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center', gap: '0.5rem', color: 'currentColor' }}>
-                <label style={{ fontSize: '1rem' }} htmlFor="email">
-                    Email
-                </label>
-                <input
-                    style={{
-                        borderRadius: '0.375rem',
-                        padding: '0.5rem 1rem',
-                        backgroundColor: 'inherit',
-                        border: '1px solid',
-                        marginBottom: '1.5rem',
-                    }}
-                    name="email"
-                    placeholder="you@example.com"
-                    required
-                />
-                <label style={{ fontSize: '1rem' }} htmlFor="password">
-                    Password
-                </label>
-                <input
-                    style={{
-                        borderRadius: '0.375rem',
-                        padding: '0.5rem 1rem',
-                        backgroundColor: 'inherit',
-                        border: '1px solid',
-                        marginBottom: '1.5rem',
-                    }}
-                    type="password"
-                    name="password"
-                    placeholder="••••••••"
-                    required
-                />
-                <SubmitButton
-                    formAction={signIn}
-                    style={{
-                        backgroundColor: '#047857', // Assuming bg-green-700 is a green color
-                        borderRadius: '0.375rem',
-                        padding: '0.5rem 1rem',
-                        color: 'currentColor',
-                        marginBottom: '0.5rem',
-                    }}
-                    pendingText="Signing In..."
-                >
-                    Sign In
-                </SubmitButton>
-                <SubmitButton
-                    formAction={signUp}
-                    style={{
-                        border: '1px solid rgba(31, 41, 55, 0.2)', // Assuming border-foreground/20 is a light gray border
-                        borderRadius: '0.375rem',
-                        padding: '0.5rem 1rem',
-                        color: 'currentColor',
-                        marginBottom: '0.5rem',
-                    }}
-                    pendingText="Signing Up..."
-                >
-                    Sign Up
-                </SubmitButton>
-                {searchParams?.message && (
-                    <p style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'rgba(31, 41, 55, 0.1)', color: 'currentColor', textAlign: 'center' }}>
-                        {searchParams.message}
-                    </p>
-                )}
-            </form>
-        </div>
+                        <FormControl id="email">
+                            <FormLabel>Email</FormLabel>
+                            <Input name="email" type="email" placeholder="johndoe@email.com" required />
+                        </FormControl>
+                        <FormControl id="password">
+                            <FormLabel>Password</FormLabel>
+                            <Input name="password" type="password" placeholder="password" required />
+                        </FormControl>
+                        <SubmitButton
+                            formAction={signIn}
+                            color='primary'
+                            pendingText="Signing In..."
+                        >
+                            Log In
+                        </SubmitButton>
+                        {searchParams?.message && (
+                            <p style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'rgba(31, 41, 55, 0.1)', color: 'currentColor', textAlign: 'center' }}>
+                                {searchParams.message}
+                            </p>
+                        )}
+                        <Typography
+                            endDecorator={<Link href="/sign-up">Sign up</Link>}
+                            fontSize="sm"
+                            sx={{ alignSelf: 'center' }}
+                        >
+                            Don&apos;t have an account?
+                        </Typography>
+                    </Sheet>
+                </Sheet>
+            </form >
+        </Stack>
     );
 }

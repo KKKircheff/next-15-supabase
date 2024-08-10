@@ -1,9 +1,9 @@
-import DeployButton from "@/components/DeployButton";
-import AuthButton from "@/components/AuthButton";
+import DeployButton from "@/components/buttons/DeployButton";
+import AuthButton from "@/components/buttons/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
-import Header from "@/components/Header";
 import { redirect } from "next/navigation";
+import 'server-only'
 
 export default async function ProtectedPage() {
     const supabase = createClient();
@@ -31,7 +31,6 @@ export default async function ProtectedPage() {
             </div>
 
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '5rem', maxWidth: '64rem', padding: '0.75rem' }}>
-                <Header />
                 <main style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     <h2 style={{ fontWeight: 'bold', fontSize: '2.25rem', marginBottom: '1rem' }}>Next steps</h2>
                     <FetchDataSteps />
