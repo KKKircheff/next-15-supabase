@@ -1,4 +1,4 @@
-import SignOutButton from "@/components/SignOutButton";
+import SignOutButton from "@/components/buttons/SignOutButton/SignOutButton";
 import { createClient } from "@/utils/supabase/server";
 import { Sheet, Stack, Typography } from "@mui/joy";
 export default async function Index() {

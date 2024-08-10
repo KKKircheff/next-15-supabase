@@ -1,7 +1,7 @@
 import * as React from 'react';
 import "./globals.css";
 import ThemeRegistry from '@/utils/joy-ui/ThemeRegistry';
-import Header from '@/components/Header';
+import Header from '@/components/ui/Header';
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`

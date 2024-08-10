@@ -59,12 +59,13 @@ Joy UI setings from link below:
 https://github.com/mui/material-ui/tree/master/examples/joy-ui-nextjs-ts
 
 npm install @mui/joy @emotion/react @emotion/styled --legacy-peer-deps
-
                           
 ## auth
 
 npm install @supabase/supabase-js
 npm install @supabase/ssr
+
+npm install zod
 
 ## Latest Supabase with NextJs Auth changes on:
         /* https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware&queryGroups=package-manager&package-manager=pnpm

@@ -1,6 +1,6 @@
 import { Button, Link, Stack } from "@mui/joy";
-import NextLogo from "./NextLogo";
-import SupabaseLogo from "./SupabaseLogo";
+import NextLogo from "../logos/NextLogo";
+import SupabaseLogo from "../logos/SupabaseLogo";
 
 export default function Header() {
     return (

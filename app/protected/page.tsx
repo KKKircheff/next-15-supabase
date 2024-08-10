@@ -1,5 +1,5 @@
-import DeployButton from "@/components/DeployButton";
-import AuthButton from "@/components/AuthButton";
+import DeployButton from "@/components/buttons/DeployButton";
+import AuthButton from "@/components/buttons/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
 import { redirect } from "next/navigation";

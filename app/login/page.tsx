@@ -2,9 +2,9 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { SubmitButton } from "../../components/SubmitButton";
+import { SubmitButton } from "../../components/buttons/SubmitButton";
 import { Button, FormControl, FormLabel, Input, Sheet, Stack, Typography } from "@mui/joy";
-import AuthButton from "@/components/AuthButton";
+import AuthButton from "@/components/buttons/AuthButton";
 import 'server-only'
 
 
