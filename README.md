@@ -66,6 +66,7 @@ npm install @supabase/supabase-js
 npm install @supabase/ssr
 
 npm install zod
+npm install server-only --legacy-peer-deps
 
 ## Latest Supabase with NextJs Auth changes on:
         /* https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware&queryGroups=package-manager&package-manager=pnpm
@@ -80,3 +81,6 @@ https://github.com/supabase-community/chatgpt-your-files/blob/main/README.md
 https://supabase.com/docs/reference/cli/supabase-gen-type
 
 https://github.com/mui/material-ui/tree/master/examples/joy-ui-nextjs-ts
+
+https://zod.dev/
+
