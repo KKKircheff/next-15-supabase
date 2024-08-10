@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@mui/joy";
+import { Button } from "@mui/material";
 import { useActionState } from "react";
 import { signOut } from "./action";
 export default function SignOutButton() {

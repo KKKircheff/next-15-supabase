@@ -1,12 +1,12 @@
 import SignOutButton from "@/components/buttons/SignOutButton/SignOutButton";
 import { createClient } from "@/utils/supabase/server";
-import { Sheet, Stack, Typography } from "@mui/joy";
+import { Paper, Stack, Typography } from "@mui/material";
 export default async function Index() {
     const supabase = createClient();
     const { data: { user }, } = await supabase.auth.getUser()
 
     return (
-        <Sheet
+        <Paper
             sx={{
                 display: 'flex',
                 flexFlow: 'row nowrap',
@@ -15,7 +15,7 @@ export default async function Index() {
                 minHeight: '100vh',
             }}
         >
-            <Sheet
+            <Paper
                 sx={{
                     maxWidth: 500,
                     mx: 'auto', my: 4, py: 3, px: 2,
@@ -27,14 +27,14 @@ export default async function Index() {
                 variant="outlined"
             >
                 <Stack gap={3}>
-                    <Typography level="h4" component="h1">
+                    <Typography variant="h4" component="h1">
                         <strong>Welcome back 👋</strong>
                     </Typography>
-                    {!user && <Typography level="body-sm">Sign in to continue.</Typography>}
-                    {user ? <Typography level="body-sm">You are signed in {user.email}. Browse protected routes.</Typography> : null}
+                    {!user && <Typography variant="subtitle1">Sign in to continue.</Typography>}
+                    {user ? <Typography variant="subtitle1">You are signed in {user.email}. Browse protected routes.</Typography> : null}
                     {user ? <SignOutButton /> : null}
                 </Stack>
-            </Sheet>
-        </Sheet>
+            </Paper>
+        </Paper>
     );
 }

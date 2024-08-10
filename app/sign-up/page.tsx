@@ -2,7 +2,7 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { FormControl, FormLabel, Input, Sheet, Stack, Typography } from "@mui/joy";
+import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";
 import AuthButton from "@/components/buttons/AuthButton";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
 import 'server-only'
@@ -55,7 +55,7 @@ export default function Login({
 
     return (
         <form>
-            <Sheet
+            <Paper
                 sx={{
                     display: 'flex',
                     flexFlow: 'row nowrap',
@@ -64,7 +64,7 @@ export default function Login({
                     minHeight: '100vh',
                 }}
             >
-                <Sheet
+                <Paper
                     sx={{
                         width: 300,
                         mx: 'auto', my: 4, py: 3, px: 2,
@@ -76,10 +76,10 @@ export default function Login({
                     variant="outlined"
                 >
                     <Stack>
-                        <Typography level="h4" component="h1">
+                        <Typography variant="h4" component="h1">
                             <strong>Welcome back 👋</strong>
                         </Typography>
-                        <Typography level="body-sm">Sign in to continue.</Typography>
+                        <Typography variant="subtitle1">Sign in to continue.</Typography>
                     </Stack>
 
                     <FormControl id="email">
@@ -103,14 +103,13 @@ export default function Login({
                         </p>
                     )}
                     <Typography
-                        endDecorator={<Link href="/login">Log in</Link>}
                         fontSize="sm"
                         sx={{ alignSelf: 'center' }}
                     >
-                        Alread have an account?
+                        Alread have an account? <Link href="/login">Log in</Link>
                     </Typography>
-                </Sheet>
-            </Sheet>
+                </Paper>
+            </Paper>
         </form>
     );
 }
