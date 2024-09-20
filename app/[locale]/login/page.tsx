@@ -2,7 +2,7 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { SubmitButton } from "../../components/buttons/SubmitButton";
+import { SubmitButton } from "../../../components/buttons/SubmitButton";
 import AuthButton from "@/components/buttons/AuthButton";
 import 'server-only'
 import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";

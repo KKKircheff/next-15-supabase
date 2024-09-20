@@ -69,6 +69,8 @@ npm install @mui/material @emotion/react @emotion/styled --legacy-peer-deps
 npm install @mui/material-nextjs @emotion/cache --legacy-peer-deps
 npm install @fontsource/roboto --legacy-peer-deps
 
+npm install next-intl --legacy-peer-deps
+
 ## Latest Supabase with NextJs Auth changes on:
         /* https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware&queryGroups=package-manager&package-manager=pnpm
         /* then run dev server in new terminal with 'npm run dev' - Ready!!!      

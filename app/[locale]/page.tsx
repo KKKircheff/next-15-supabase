@@ -1,9 +1,12 @@
 import SignOutButton from "@/components/buttons/SignOutButton/SignOutButton";
 import { createClient } from "@/utils/supabase/server";
 import { Paper, Stack, Typography } from "@mui/material";
-export default async function Index() {
+import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+export default async function Home() {
     const supabase = createClient();
     const { data: { user }, } = await supabase.auth.getUser()
+    const t = await getTranslations('Home');
 
     return (
         <Paper
@@ -28,7 +31,7 @@ export default async function Index() {
             >
                 <Stack gap={3}>
                     <Typography variant="h4" component="h1">
-                        <strong>Welcome back 👋</strong>
+                        <strong>{t("welcome")}</strong>👋
                     </Typography>
                     {!user && <Typography variant="subtitle1">Sign in to continue.</Typography>}
                     {user ? <Typography variant="subtitle1">You are signed in {user.email}. Browse protected routes.</Typography> : null}

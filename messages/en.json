@@ -1,0 +1,24 @@
+{
+    "NavbarLinks": {
+        "Home": "Home",
+        "HomeTitle": "Home page",
+        "Login": "Log in",
+        "LoginTitle": "Log in",
+        "SignUp": "Sign up",
+        "SignUpTitle": "Sign up",
+        "ProtectedPage": "Protected",
+        "ProtectedTitle": "Protected"
+    },
+    "Home": {
+        "welcome": "Welcome back"
+    },
+    "SignUp": {
+        "title": "Hey"
+    },
+    "Login": {
+        "title": "Profile"
+    },
+    "Protected": {
+        "title": "Hey"
+    }
+}

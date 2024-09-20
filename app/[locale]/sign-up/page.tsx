@@ -6,7 +6,7 @@ import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/ma
 import AuthButton from "@/components/buttons/AuthButton";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
 import 'server-only'
-export default function Login({
+export default function SignUp({
     searchParams,
 }: {
     searchParams: { message: string };
