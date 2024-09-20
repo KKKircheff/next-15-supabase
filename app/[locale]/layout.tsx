@@ -29,7 +29,7 @@ export default async function RootLayout({
             <body>
                 <NextIntlClientProvider messages={messages}>
                     <ThemeRegistry>
-                        <Header />
+                        <Header locale={locale} />
                         {children}
                     </ThemeRegistry>
                 </NextIntlClientProvider>

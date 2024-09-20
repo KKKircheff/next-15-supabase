@@ -6,7 +6,7 @@
         "LoginTitle": "Log in",
         "SignUp": "Sign up",
         "SignUpTitle": "Sign up",
-        "ProtectedPage": "Protected",
+        "Protected": "Protected route",
         "ProtectedTitle": "Protected"
     },
     "Home": {

@@ -1,12 +1,12 @@
 {
     "NavbarLinks": {
-        "Home": "Home",
+        "Home": "HomeNL",
         "HomeTitle": "Home page",
         "Login": "Log in",
         "LoginTitle": "Log in",
         "SignUp": "Sign up",
         "SignUpTitle": "Sign up",
-        "ProtectedPage": "Protected",
+        "Protected": "Protected route",
         "ProtectedTitle": "Protected"
     },
     "Home": {
