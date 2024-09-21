@@ -1,5 +1,5 @@
 "use client"
-import { Button, Stack } from "@mui/material";
+import { Button, MenuItem, Select, SelectChangeEvent, Stack } from "@mui/material";
 import NextLogo from "../logos/NextLogo";
 import SupabaseLogo from "../logos/SupabaseLogo";
 import { useTranslations } from "next-intl";
@@ -13,12 +13,10 @@ type Props = {
 export default function Navbar({ locale }: Props) {
     const t = useTranslations("NavbarLinks");
     const pathname = usePathname()
-    console.log('Locale:', locale, ' Path:', pathname,)
     const router = useRouter();
 
-    const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const newLocale = e.target.value as string;
-        const path = pathname.split("/").slice(2).join("/");
+    const handleLanguageChange = (e: SelectChangeEvent<Locale>) => {
+        const newLocale = e.target.value as Locale;
         router.push(`/${newLocale}/${pathname}`);
     };
     return (
@@ -49,10 +47,15 @@ export default function Navbar({ locale }: Props) {
                     {t("Protected")}
                 </Button>
             </Link>
-            <select value={locale} onChange={(e) => handleLanguageChange(e)}>
-                <option value='en'>EN</option>
-                <option value='nl'>NL</option>
-            </select>
+            <Select
+                variant="standard"
+                size="small"
+                value={locale}
+                color="primary"
+                onChange={(e) => handleLanguageChange(e)}>
+                <MenuItem value='en'>EN</MenuItem>
+                <MenuItem value='nl'>NL</MenuItem>
+            </Select>
         </Stack>
     );
 }
