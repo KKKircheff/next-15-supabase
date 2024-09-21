@@ -7,16 +7,16 @@ export const routing = defineRouting({
     pathnames: {
         '/': '/',
         '/login': {
-            en: 'en/login',
-            nl: 'nl/login',
+            en: '/login',
+            nl: '/login',
         },
         '/protected': {
-            en: 'en/protected',
-            nl: 'nl/protected',
+            en: '/protected',
+            nl: '/protected',
         },
         '/sign-up': {
-            en: 'en/sign-up',
-            nl: 'nl/sign-up',
+            en: '/sign-up',
+            nl: '/sign-up',
         },
     },
 });

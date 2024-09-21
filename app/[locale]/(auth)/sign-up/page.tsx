@@ -1,34 +1,15 @@
-import Link from "next/link";
+import 'server-only'
 import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
 import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";
 import AuthButton from "@/components/buttons/AuthButton";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
-import 'server-only'
+import { Link, redirect } from "@/utils/next-intl/routing";
 export default function SignUp({
     searchParams,
 }: {
     searchParams: { message: string };
 }) {
-    const signIn = async (formData: FormData) => {
-        "use server";
-
-        const email = formData.get("email") as string;
-        const password = formData.get("password") as string;
-        const supabase = createClient();
-
-        const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
-
-        if (error) {
-            return redirect("/login?message=Could not authenticate user");
-        }
-
-        return redirect("/protected");
-    };
 
     const signUp = async (formData: FormData) => {
         "use server";
@@ -47,10 +28,20 @@ export default function SignUp({
         });
 
         if (error) {
-            return redirect("/login?message=Could not authenticate user");
+            console.log(error);
+            return redirect({
+                pathname: '/sign-up',
+                query: {
+                    message: 'Error when creating user'
+                }
+            });
         }
-
-        return redirect("/login?message=Check email to continue sign in process");
+        return redirect({
+            pathname: '/login',
+            query: {
+                message: 'You can log in now with your new credentials'
+            }
+        });
     };
 
     return (
@@ -76,10 +67,10 @@ export default function SignUp({
                     variant="outlined"
                 >
                     <Stack>
-                        <Typography variant="h4" component="h1">
-                            <strong>Welcome back 👋</strong>
+                        <Typography variant="h5" component="h1">
+                            <strong>Create an account 👋</strong>
                         </Typography>
-                        <Typography variant="subtitle1">Sign in to continue.</Typography>
+                        <Typography variant="subtitle1">Sign up here</Typography>
                     </Stack>
 
                     <FormControl id="email">
