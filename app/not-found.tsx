@@ -11,7 +11,6 @@ export default function NotFound() {
         <html lang="en">
             <body>
                 <Error statusCode={404} />
-                <h1>Error main page</h1>
             </body>
         </html>
     );

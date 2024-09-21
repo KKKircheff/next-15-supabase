@@ -9,7 +9,7 @@ type Props = {
     locale: string
 }
 
-export default function Header({ locale }: Props) {
+export default function Navbar({ locale }: Props) {
     const t = useTranslations("NavbarLinks");
     const pathname = usePathname();
     const router = useRouter();

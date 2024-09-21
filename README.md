@@ -71,6 +71,7 @@ npm install @fontsource/roboto --legacy-peer-deps
 
 npm install next-intl --legacy-peer-deps
 // the video for next 15 with next-intl https://www.youtube.com/watch?v=2Jh9olZXBfw
+// repo https://github.com/umairjameel321/next15-intl-i18n/blob/main/app/%5Blocale%5D/page.tsx
 
 ## Latest Supabase with NextJs Auth changes on:
         /* https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware&queryGroups=package-manager&package-manager=pnpm

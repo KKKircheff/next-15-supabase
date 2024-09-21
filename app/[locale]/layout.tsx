@@ -1,9 +1,9 @@
 import * as React from 'react';
 import "../globals.css";
 import ThemeRegistry from '@/utils/mui/ThemeRegistry';
-import Header from '@/components/ui/Header';
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl"
+import Navbar from '@/components/ui/Navbar';
 
 
 const defaultUrl = process.env.VERCEL_URL
@@ -29,7 +29,7 @@ export default async function RootLayout({
             <body>
                 <NextIntlClientProvider messages={messages}>
                     <ThemeRegistry>
-                        <Header locale={locale} />
+                        <Navbar locale={locale} />
                         {children}
                     </ThemeRegistry>
                 </NextIntlClientProvider>
