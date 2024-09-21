@@ -22,14 +22,13 @@ export default async function ProtectedPage() {
                 <div style={{ padding: '1.5rem', fontWeight: 'bold', backgroundColor: '#5b21b6', textAlign: 'center', color: 'white' }}>
                     This is a protected page that you can only see as an authenticated user
                 </div>
-                <nav style={{ width: '100%', display: 'flex', justifyContent: 'center', borderBottom: '1px solid rgba(31, 41, 55, 0.1)', height: '4rem' }}>
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', borderBottom: '1px solid rgba(31, 41, 55, 0.1)', height: '4rem' }}>
                     <div style={{ width: '100%', maxWidth: '64rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem', fontSize: '0.875rem' }}>
                         <DeployButton />
                         <AuthButton />
                     </div>
-                </nav>
+                </div>
             </div>
-
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '5rem', maxWidth: '64rem', padding: '0.75rem' }}>
                 <main style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     <h2 style={{ fontWeight: 'bold', fontSize: '2.25rem', marginBottom: '1rem' }}>Next steps</h2>

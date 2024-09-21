@@ -7,16 +7,16 @@ export const routing = defineRouting({
     pathnames: {
         '/': '/',
         '/login': {
-            en: '/login',
-            nl: '/login',
+            en: 'en/login',
+            nl: 'nl/login',
         },
         '/protected': {
-            en: '/protected',
-            nl: '/protected',
+            en: 'en/protected',
+            nl: 'nl/protected',
         },
         '/sign-up': {
-            en: '/sign-up',
-            nl: '/',
+            en: 'en/sign-up',
+            nl: 'nl/sign-up',
         },
     },
 });
@@ -24,5 +24,6 @@ export const routing = defineRouting({
 export type Pathnames = keyof typeof routing.pathnames;
 export type Locale = (typeof routing.locales)[number];
 
+//don't use this useRouter !!! Not correct behaviour
 export const {Link, getPathname, redirect, usePathname, useRouter} =
     createLocalizedPathnamesNavigation(routing);
