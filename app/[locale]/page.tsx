@@ -4,11 +4,17 @@ import { Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 
-export async function generateMetadata({
-    params: { locale },
-}: {
-    params: { locale: string };
-}) {
+export async function generateMetadata(
+    props: {
+        params: Promise<{ locale: string }>;
+    }
+) {
+    const params = await props.params;
+
+    const {
+        locale
+    } = params;
+
     const messages: any = await getMessages({ locale });
     const title = messages.NavbarLinks.HomeTitle;
     console.log(title);

@@ -16,13 +16,22 @@ export const metadata = {
     description: "The fastest way to build apps with Next.js and Supabase",
 };
 
-export default async function RootLayout({
-    children,
-    params: { locale },
-}: Readonly<{
-    children: React.ReactNode;
-    params: { locale: string };
-}>) {
+export default async function RootLayout(
+    props: Readonly<{
+        children: React.ReactNode;
+        params: { locale: string };
+    }>
+) {
+    const params = await props.params;
+
+    const {
+        locale
+    } = params;
+
+    const {
+        children
+    } = props;
+
     const messages = await getMessages();
     return (
         <html lang={locale}>

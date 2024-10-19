@@ -5,11 +5,12 @@ import { SubmitButton } from "@/components/buttons/SubmitButton";
 import { Link, redirect } from "@/utils/next-intl/routing";
 
 
-export default function Login({
-    searchParams,
-}: {
-    searchParams: { message: string };
-}) {
+export default async function Login(
+    props: {
+        searchParams: Promise<{ message: string }>;
+    }
+) {
+    const searchParams = await props.searchParams;
     const signIn = async (formData: FormData) => {
         "use server";
 
