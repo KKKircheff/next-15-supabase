@@ -1,4 +1,4 @@
-import {createLocalizedPathnamesNavigation} from 'next-intl/navigation';
+import {createNavigation} from 'next-intl/navigation';
 import {defineRouting} from 'next-intl/routing';
 
 export const routing = defineRouting({
@@ -25,5 +25,5 @@ export type Pathnames = keyof typeof routing.pathnames;
 export type Locale = (typeof routing.locales)[number];
 
 //don't use this useRouter !!! Not correct behaviour
-export const {Link, getPathname, redirect, usePathname, useRouter} =
-    createLocalizedPathnamesNavigation(routing);
+export const {Link, redirect, usePathname, useRouter} =
+    createNavigation(routing);

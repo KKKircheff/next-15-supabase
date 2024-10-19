@@ -20,7 +20,7 @@
     "@supabase/supabase-js": "^2.44.4",
     "babel-plugin-react-compiler": "^0.0.0-experimental-696af53-20240625",
     "next": "^15.0.0-rc.1",
-    "next-intl": "^3.19.4",
+    "next-intl": "^0.0.0-canary-0b8e3a5",
     "react": "^19.0.0-rc-b8ae38f8-20241018",
     "react-dom": "^19.0.0-rc-b8ae38f8-20241018",
     "server-only": "^0.0.1",
@@ -31,7 +31,7 @@
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "eslint": "^8",
-    "eslint-config-next": "15.0.0-rc.1",
+    "eslint-config-next": "^15.0.0-rc.1",
     "supabase": "^1.187.3",
     "typescript": "^5"
   },

@@ -2,7 +2,7 @@ import { Link, redirect } from "@/utils/next-intl/routing";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function AuthButton() {
-    const supabase = createClient();
+    const supabase = await createClient();
 
     const {
         data: { user },
@@ -11,7 +11,7 @@ export default async function AuthButton() {
     const signOut = async () => {
         "use server";
 
-        const supabase = createClient();
+        const supabase = await createClient();
         await supabase.auth.signOut();
         return redirect("/login");
     };

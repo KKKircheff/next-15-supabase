@@ -4,6 +4,7 @@ import ThemeRegistry from '@/utils/mui/ThemeRegistry';
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl"
 import Navbar from '@/components/ui/Navbar';
+import { Locale } from '@/utils/next-intl/routing';
 
 
 const defaultUrl = process.env.VERCEL_URL
@@ -19,7 +20,7 @@ export const metadata = {
 export default async function RootLayout(
     props: Readonly<{
         children: React.ReactNode;
-        params: { locale: string };
+        params: { locale: Locale };
     }>
 ) {
     const params = await props.params;
@@ -37,7 +38,7 @@ export default async function RootLayout(
         <html lang={locale}>
             <body>
                 <NextIntlClientProvider messages={messages}>
-                    <ThemeRegistry>
+                    <ThemeRegistry>``
                         <Navbar locale={locale} />
                         {children}
                     </ThemeRegistry>
