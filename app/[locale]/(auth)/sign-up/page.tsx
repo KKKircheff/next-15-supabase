@@ -2,7 +2,6 @@ import 'server-only'
 import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";
-import AuthButton from "@/components/buttons/AuthButton";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
 import { Link, redirect } from "@/utils/next-intl/routing";
 export default function SignUp({

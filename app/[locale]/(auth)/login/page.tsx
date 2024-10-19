@@ -1,7 +1,5 @@
-"server only"
-import { createClient } from "@/utils/supabase/server";
-import AuthButton from "@/components/buttons/AuthButton";
 import 'server-only'
+import { createClient } from "@/utils/supabase/server";
 import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
 import { Link, redirect } from "@/utils/next-intl/routing";
