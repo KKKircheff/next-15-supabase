@@ -18,7 +18,7 @@ export async function generateMetadata() {
 
 export default async function Home() {
     const supabase = await createClient();
-    const { data: { user }, } = await supabase.auth.getUser()
+    const { data: { user } } = await supabase.auth.getUser()
 
     const t = await getTranslations('Home');
 
@@ -47,7 +47,7 @@ export default async function Home() {
                     <Typography variant="h4" component="h1">
                         <strong>{t("welcome")}</strong>👋
                     </Typography>
-                    {!user && <Typography variant="subtitle1">Sign in to continue.</Typography>}
+                    {!user && <Typography variant="subtitle1">Log in or Sign in to continue.</Typography>}
                     {user ? <Typography variant="subtitle1">You are signed in {user.email}. Browse protected routes.</Typography> : null}
                     {user ? <SignOutButton /> : null}
                 </Stack>

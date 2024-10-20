@@ -4,12 +4,9 @@ import {redirect} from '../next-intl/routing';
 import {getLocale} from 'next-intl/server';
 
 export async function updateSession(request: NextRequest) {
-    console.log('----- 1 -----');
     let supabaseResponse = NextResponse.next({
         request,
     });
-
-    console.log('----- 2 before -----');
 
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -38,7 +35,6 @@ export async function updateSession(request: NextRequest) {
     // supabase.auth.getUser(). A simple mistake could make it very hard to debug
     // issues with users being randomly logged out.
 
-    console.log('----- 3 after -----');
     const {
         data: {user},
     } = await supabase.auth.getUser();
@@ -54,8 +50,7 @@ export async function updateSession(request: NextRequest) {
         !user &&
         !pathnameWithoutLocale.startsWith('/') &&
         !pathnameWithoutLocale.startsWith('/login') &&
-        !pathnameWithoutLocale.startsWith('/sign-up') &&
-        !pathnameWithoutLocale.startsWith('/auth')
+        !pathnameWithoutLocale.startsWith('/sign-up')
     ) {
         return redirect({
             href: {
