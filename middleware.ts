@@ -9,7 +9,7 @@ export const config = {
     matcher: [
         '/',
         '/(nl|en)/:path*',
-        // '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+        '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)', // Exclude specific paths and file types
     ],
 };
 
@@ -22,14 +22,14 @@ export const config = {
 
 // export const config = {
 //   matcher: [
-//     /*
-//      * Match all request paths except:
-//      * - _next/static (static files)
-//      * - _next/image (image optimization files)
-//      * - favicon.ico (favicon file)
-//      * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
-//      * Feel free to modify this pattern to include more paths.
-//      */
+// /*
+//  * Match all request paths except:
+//  * - _next/static (static files)
+//  * - _next/image (image optimization files)
+//  * - favicon.ico (favicon file)
+//  * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
+//  * Feel free to modify this pattern to include more paths.
+//  */
 // "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
 //   ],
 // };

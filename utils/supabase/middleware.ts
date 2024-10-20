@@ -1,10 +1,15 @@
 import {createServerClient} from '@supabase/ssr';
 import {NextResponse, type NextRequest} from 'next/server';
+import {redirect} from '../next-intl/routing';
+import {getLocale} from 'next-intl/server';
 
 export async function updateSession(request: NextRequest) {
+    console.log('----- 1 -----');
     let supabaseResponse = NextResponse.next({
         request,
     });
+
+    console.log('----- 2 before -----');
 
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -33,22 +38,31 @@ export async function updateSession(request: NextRequest) {
     // supabase.auth.getUser(). A simple mistake could make it very hard to debug
     // issues with users being randomly logged out.
 
+    console.log('----- 3 after -----');
     const {
         data: {user},
     } = await supabase.auth.getUser();
 
     // the list of unprotected routes
+    const locale = await getLocale();
+    const pathnameWithoutLocale = request.nextUrl.pathname.replace(
+        `/${locale}`,
+        ''
+    );
+
     if (
         !user &&
-        !request.nextUrl.pathname.startsWith('/') &&
-        !request.nextUrl.pathname.startsWith('/login') &&
-        !request.nextUrl.pathname.startsWith('/sign-up') &&
-        !request.nextUrl.pathname.startsWith('/auth')
+        !pathnameWithoutLocale.startsWith('/') &&
+        !pathnameWithoutLocale.startsWith('/login') &&
+        !pathnameWithoutLocale.startsWith('/sign-up') &&
+        !pathnameWithoutLocale.startsWith('/auth')
     ) {
-        // no user, potentially respond by redirecting the user to the login page
-        const url = request.nextUrl.clone();
-        url.pathname = '/login';
-        return NextResponse.redirect(url);
+        return redirect({
+            href: {
+                pathname: `/login`,
+            },
+            locale,
+        });
     }
 
     // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're

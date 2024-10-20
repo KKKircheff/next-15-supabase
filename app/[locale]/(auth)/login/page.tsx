@@ -1,8 +1,8 @@
 import 'server-only'
-import { createClient } from "@/utils/supabase/server";
 import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
-import { Link, redirect } from "@/utils/next-intl/routing";
+import { Link, } from "@/utils/next-intl/routing";
+import { signIn } from '@/actions/signIn';
 
 
 export default async function Login(
@@ -11,28 +11,6 @@ export default async function Login(
     }
 ) {
     const searchParams = await props.searchParams;
-    const signIn = async (formData: FormData) => {
-        "use server";
-
-        const email = formData.get("email") as string;
-        const password = formData.get("password") as string;
-        const supabase = await createClient();
-
-        const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
-
-        if (error) {
-            return redirect({
-                pathname: '/login',
-                query: {
-                    message: 'Could not authenticate user'
-                }
-            });
-        }
-        return redirect("/protected");
-    };
 
     return (
         <Stack>

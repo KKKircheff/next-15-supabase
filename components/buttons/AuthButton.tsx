@@ -1,4 +1,5 @@
-import { Link, redirect } from "@/utils/next-intl/routing";
+import { signOut } from "@/actions/signOut";
+import { Link } from "@/utils/next-intl/routing";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function AuthButton() {
@@ -7,14 +8,6 @@ export default async function AuthButton() {
     const {
         data: { user },
     } = await supabase.auth.getUser();
-
-    const signOut = async () => {
-        "use server";
-
-        const supabase = await createClient();
-        await supabase.auth.signOut();
-        return redirect("/login");
-    };
 
     return user ? (
         <div style={{

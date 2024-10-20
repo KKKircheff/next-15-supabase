@@ -1,9 +1,8 @@
 import 'server-only'
-import { headers } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
 import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
-import { Link, redirect } from "@/utils/next-intl/routing";
+import { Link } from "@/utils/next-intl/routing";
+import { signUp } from '@/actions/signUp';
 
 export default async function SignUp(
     props: {
@@ -11,39 +10,6 @@ export default async function SignUp(
     }
 ) {
     const searchParams = await props.searchParams;
-    const signUpHeaders = await headers();
-
-    const signUp = async (formData: FormData) => {
-        "use server";
-        const origin = signUpHeaders.get("origin");
-        const email = formData.get("email") as string;
-        const password = formData.get("password") as string;
-        const supabase = await createClient();
-
-        const { error } = await supabase.auth.signUp({
-            email,
-            password,
-            options: {
-                emailRedirectTo: `${origin}/auth/callback`,
-            },
-        });
-
-        if (error) {
-            console.log(error);
-            return redirect({
-                pathname: '/sign-up',
-                query: {
-                    message: 'Error when creating user'
-                }
-            });
-        }
-        return redirect({
-            pathname: '/login',
-            query: {
-                message: 'You can log in now with your new credentials'
-            }
-        });
-    };
 
     return (
         <form>

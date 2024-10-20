@@ -1,23 +1,14 @@
+import 'server-only'
 import SignOutButton from "@/components/buttons/SignOutButton/SignOutButton";
 import { createClient } from "@/utils/supabase/server";
 import { Paper, Stack, Typography } from "@mui/material";
-import { useTranslations } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
+import { Locale } from '@/utils/next-intl/routing';
 
-export async function generateMetadata(
-    props: {
-        params: Promise<{ locale: string }>;
-    }
-) {
-    const params = await props.params;
-
-    const {
-        locale
-    } = params;
-
+export async function generateMetadata() {
+    const locale = await getLocale() as Locale;
     const messages: any = await getMessages({ locale });
     const title = messages.NavbarLinks.HomeTitle;
-    console.log(title);
 
     return {
         title,

@@ -1,19 +1,27 @@
+import 'server-only'
 import DeployButton from "@/components/buttons/DeployButton";
 import AuthButton from "@/components/buttons/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
-import { redirect } from "next/navigation";
-import 'server-only'
+import { getLocale } from "next-intl/server";
+import { redirect } from "@/utils/next-intl/routing";
 
 export default async function ProtectedPage() {
     const supabase = await createClient();
+    const locale = await getLocale();
 
     const {
         data: { user },
     } = await supabase.auth.getUser();
 
     if (!user) {
-        return redirect("/login");
+        return redirect({
+            href: {
+                pathname: '/login',
+                query: { 'message': 'No  user.' },
+            },
+            locale,
+        });
     }
 
     return (

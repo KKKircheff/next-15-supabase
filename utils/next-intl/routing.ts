@@ -25,5 +25,5 @@ export type Pathnames = keyof typeof routing.pathnames;
 export type Locale = (typeof routing.locales)[number];
 
 //don't use this useRouter !!! Not correct behaviour
-export const {Link, redirect, usePathname, useRouter} =
+export const {Link, redirect, usePathname, getPathname, useRouter} =
     createNavigation(routing);

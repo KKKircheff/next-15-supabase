@@ -1,7 +1,7 @@
 import * as React from 'react';
 import "../globals.css";
 import ThemeRegistry from '@/utils/mui/ThemeRegistry';
-import { getMessages } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl"
 import Navbar from '@/components/ui/Navbar';
 import { Locale } from '@/utils/next-intl/routing';
@@ -17,28 +17,19 @@ export const metadata = {
     description: "The fastest way to build apps with Next.js and Supabase",
 };
 
-export default async function RootLayout(
-    props: Readonly<{
-        children: React.ReactNode;
-        params: { locale: Locale };
-    }>
-) {
-    const params = await props.params;
-
-    const {
-        locale
-    } = params;
-
-    const {
-        children
-    } = props;
-
+export default async function RootLayout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+    params: { locale: Locale };
+}>) {
+    const locale = await getLocale() as Locale;
     const messages = await getMessages();
     return (
         <html lang={locale}>
             <body>
                 <NextIntlClientProvider messages={messages}>
-                    <ThemeRegistry>``
+                    <ThemeRegistry>
                         <Navbar locale={locale} />
                         {children}
                     </ThemeRegistry>
