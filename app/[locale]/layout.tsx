@@ -13,29 +13,34 @@ type Props = {
     params: { locale: string };
 };
 
-const defaultUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
+// const defaultUrl = process.env.VERCEL_URL
+//     ? `https://${process.env.VERCEL_URL}`
+//     : "http://localhost:3000";
 
-export const metadata = {
-    metadataBase: new URL(defaultUrl),
-    title: "Next.js and Supabase Starter Kit",
-    description: "The fastest way to build apps with Next.js and Supabase",
-};
+// export const metadata = {
+//     metadataBase: new URL(defaultUrl),
+//     title: "Next.js 15 React 19 |  Supabase Auth & DB | Next-intl | Material UI Starter Kit",
+//     description: "The ultimate boilerplate to start modern web app with Next.js, Supabase and MUI",
+// };
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }));
 }
 
-// export async function generateMetadata({
-//    params: { locale }
-// }: Omit<Props, 'children'>) {
-//     const t = await getTranslations({ locale, namespace: 'LocaleLayout' });
+// Refactor and use the function below for multilanguage metadata generation 
 
-//     return {
-//         title: t('title')
-//     };
-// }
+export async function generateMetadata({
+    params
+}: Omit<Props, 'children'>) {
+    // Optionally integrate with static rendering in the 
+    // Metadata API by passing an explicit locale.
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'MetadataMain' });
+    return {
+        title: t('title'),
+        description: t('description')
+    };
+}
 
 
 export default async function LocaleLayout(

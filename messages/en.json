@@ -20,5 +20,9 @@
     },
     "Protected": {
         "title": "Hey"
+    },
+    "MetadataMain": {
+        "title": "Next.js 15 React 19 |  Supabase Auth & DB | Next-intl | Material UI Starter Kit",
+        "description": "The ultimate boilerplate to start modern web app with Next.js, Supabase and MUI"
     }
 }
