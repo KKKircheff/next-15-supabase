@@ -1,0 +1,28 @@
+{
+    "NavbarLinks": {
+        "Home": "HomeNL",
+        "HomeTitle": "Home page",
+        "Login": "Log in",
+        "LoginTitle": "Log in",
+        "SignUp": "Sign up",
+        "SignUpTitle": "Sign up",
+        "Protected": "Protected route",
+        "ProtectedTitle": "Protected"
+    },
+    "Home": {
+        "welcome": "Welkom"
+    },
+    "SignUp": {
+        "title": "Hey"
+    },
+    "Login": {
+        "title": "Profile"
+    },
+    "Protected": {
+        "title": "Hey"
+    },
+    "MetadataMain": {
+        "title": "Next.js 15 React 19 |  Supabase Auth & DB | Next-intl | Material UI Starter Kit",
+        "description": "The ultimate boilerplate to start modern web app with Next.js, Supabase and MUI"
+    }
+}

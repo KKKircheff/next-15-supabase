@@ -69,6 +69,10 @@ npm install @mui/material @emotion/react @emotion/styled --legacy-peer-deps
 npm install @mui/material-nextjs @emotion/cache --legacy-peer-deps
 npm install @fontsource/roboto --legacy-peer-deps
 
+npm install next-intl@canary  --legacy-peer-deps
+// the video for next 15 with next-intl https://www.youtube.com/watch?v=2Jh9olZXBfw
+// repo https://github.com/umairjameel321/next15-intl-i18n/blob/main/app/%5Blocale%5D/page.tsx
+
 ## Latest Supabase with NextJs Auth changes on:
         /* https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware&queryGroups=package-manager&package-manager=pnpm
         /* then run dev server in new terminal with 'npm run dev' - Ready!!!      
@@ -84,4 +88,6 @@ https://supabase.com/docs/reference/cli/supabase-gen-type
 https://github.com/mui/material-ui/tree/master/examples/joy-ui-nextjs-ts
 
 https://zod.dev/
+
+https://www.youtube.com/watch?v=2Jh9olZXBfw
 

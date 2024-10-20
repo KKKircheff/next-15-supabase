@@ -1,19 +1,27 @@
+import 'server-only'
 import DeployButton from "@/components/buttons/DeployButton";
 import AuthButton from "@/components/buttons/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
-import { redirect } from "next/navigation";
-import 'server-only'
+import { getLocale } from "next-intl/server";
+import { redirect } from "@/utils/next-intl/routing";
 
 export default async function ProtectedPage() {
-    const supabase = createClient();
+    const supabase = await createClient();
+    const locale = await getLocale();
 
     const {
         data: { user },
     } = await supabase.auth.getUser();
 
     if (!user) {
-        return redirect("/login");
+        return redirect({
+            href: {
+                pathname: '/login',
+                query: { 'message': 'No  user.' },
+            },
+            locale,
+        });
     }
 
     return (
@@ -22,14 +30,13 @@ export default async function ProtectedPage() {
                 <div style={{ padding: '1.5rem', fontWeight: 'bold', backgroundColor: '#5b21b6', textAlign: 'center', color: 'white' }}>
                     This is a protected page that you can only see as an authenticated user
                 </div>
-                <nav style={{ width: '100%', display: 'flex', justifyContent: 'center', borderBottom: '1px solid rgba(31, 41, 55, 0.1)', height: '4rem' }}>
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', borderBottom: '1px solid rgba(31, 41, 55, 0.1)', height: '4rem' }}>
                     <div style={{ width: '100%', maxWidth: '64rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem', fontSize: '0.875rem' }}>
                         <DeployButton />
                         <AuthButton />
                     </div>
-                </nav>
+                </div>
             </div>
-
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '5rem', maxWidth: '64rem', padding: '0.75rem' }}>
                 <main style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     <h2 style={{ fontWeight: 'bold', fontSize: '2.25rem', marginBottom: '1rem' }}>Next steps</h2>

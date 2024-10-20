@@ -1,59 +1,16 @@
-import Link from "next/link";
-import { headers } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
-import { SubmitButton } from "../../components/buttons/SubmitButton";
-import AuthButton from "@/components/buttons/AuthButton";
 import 'server-only'
 import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";
+import { SubmitButton } from "@/components/buttons/SubmitButton";
+import { Link, } from "@/utils/next-intl/routing";
+import { signIn } from '@/actions/signIn';
 
 
-export default function Login({
-    searchParams,
-}: {
-    searchParams: { message: string };
-}) {
-    const signIn = async (formData: FormData) => {
-        "use server";
-
-        const email = formData.get("email") as string;
-        const password = formData.get("password") as string;
-        const supabase = createClient();
-
-        const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
-
-        if (error) {
-            return redirect("/login?message=Could not authenticate user");
-        }
-
-        return redirect("/protected");
-    };
-
-    const signUp = async (formData: FormData) => {
-        "use server";
-
-        const origin = headers().get("origin");
-        const email = formData.get("email") as string;
-        const password = formData.get("password") as string;
-        const supabase = createClient();
-
-        const { error } = await supabase.auth.signUp({
-            email,
-            password,
-            options: {
-                emailRedirectTo: `${origin}/auth/callback`,
-            },
-        });
-
-        if (error) {
-            return redirect("/login?message=Could not authenticate user");
-        }
-
-        return redirect("/login?message=Check email to continue sign in process");
-    };
+export default async function Login(
+    props: {
+        searchParams: Promise<{ message: string }>;
+    }
+) {
+    const searchParams = await props.searchParams;
 
     return (
         <Stack>
@@ -80,9 +37,8 @@ export default function Login({
                     >
                         <Stack>
                             <Typography variant="h4" component="h1">
-                                <strong>Welcome back 👋</strong>
+                                <strong>Login here 👋</strong>
                             </Typography>
-                            <Typography variant="subtitle1">Sign in to continue.</Typography>
                         </Stack>
 
                         <FormControl id="email">
