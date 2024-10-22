@@ -10,7 +10,10 @@
         "ProtectedTitle": "Protected"
     },
     "Home": {
-        "welcome": "Welcome"
+        "welcome": "Welcome",
+        "signedInAs": "You are signed in ",
+        "browseRoutes": " Browse protected routes.",
+        "notLoggedMessage": "Log in or Sign in to continue."
     },
     "SignUp": {
         "title": "Hey"
@@ -19,10 +22,15 @@
         "title": "Profile"
     },
     "Protected": {
-        "title": "Hey"
+        "title": "Hey",
+        "pageHeroTitle": "This is a protected page that you can only see as an authenticated user"
     },
     "MetadataMain": {
-        "title": "Next.js 15 React 19 |  Supabase Auth & DB | Next-intl | Material UI Starter Kit",
-        "description": "The ultimate boilerplate to start modern web app with Next.js, Supabase and MUI"
+        "title": "Nextjs & Supabase & Next-intl & MUI",
+        "description": "The ultimate boilerplate to start modern web app with Next.js 15 React 19 |  Supabase Auth & DB | Next-intl | Material UI Starter Kit"
+    },
+    "MetadataLogin": {
+        "title": "Login Nextjs & Supabase & Next-intl & MUI",
+        "description": "Login The ultimate boilerplate to start modern web app with Next.js 15 React 19 |  Supabase Auth & DB | Next-intl | Material UI Starter KitI"
     }
 }

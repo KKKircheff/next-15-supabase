@@ -1,14 +1,33 @@
 import 'server-only'
 import { FormControl, FormLabel, Input, Paper, Stack, Typography } from "@mui/material";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
-import { Link, } from "@/utils/next-intl/routing";
+import { Link, Locale, } from "@/utils/next-intl/routing";
 import { signIn } from '@/actions/signIn';
+import { ReactNode } from 'react';
+import { Metadata, ResolvingMetadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
+type Props = {
+    params: { locale: Locale };
+    searchParams: Promise<{ message: string }> & { [key: string]: string | string[] | undefined }
+};
+
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const { locale } = await params;
+    const { message } = await searchParams;
+    const t = await getTranslations({ locale, namespace: 'MetadataLogin' });
+    return {
+        title: t('title'),
+        description: t('description')
+    };
+}
 
 
 export default async function Login(
-    props: {
-        searchParams: Promise<{ message: string }>;
-    }
+    props: Props
 ) {
     const searchParams = await props.searchParams;
 

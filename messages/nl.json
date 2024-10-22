@@ -1,28 +1,37 @@
 {
     "NavbarLinks": {
-        "Home": "HomeNL",
-        "HomeTitle": "Home page",
-        "Login": "Log in",
+        "Home": "Home",
+        "HomeTitle": "Startpagina",
+        "Login": "Inloggen",
         "LoginTitle": "Log in",
-        "SignUp": "Sign up",
-        "SignUpTitle": "Sign up",
-        "Protected": "Protected route",
-        "ProtectedTitle": "Protected"
+        "SignUp": "Registreren",
+        "SignUpTitle": "Aanmelden",
+        "Protected": "Beveiligde route",
+        "ProtectedTitle": "Beveiligd"
     },
     "Home": {
-        "welcome": "Welkom"
+        "welcome": "Welkom",
+        "signedInAs": "Je bent ingelogd als",
+        "browseRoutes": "Blader door beveiligde routes.",
+        "notLoggedMessage": "Log in of registreer om door te gaan."
     },
     "SignUp": {
-        "title": "Hey"
+        "title": "Hallo"
     },
     "Login": {
-        "title": "Profile"
+        "title": "Profiel"
     },
+
     "Protected": {
-        "title": "Hey"
+        "title": "Hallo",
+        "pageHeroTitle": "Dit is een beveiligde pagina die je alleen kunt zien als een geauthenticeerde gebruiker"
     },
     "MetadataMain": {
-        "title": "Next.js 15 React 19 |  Supabase Auth & DB | Next-intl | Material UI Starter Kit",
-        "description": "The ultimate boilerplate to start modern web app with Next.js, Supabase and MUI"
+        "title": "Nextjs & Supabase & Next-intl & MUI",
+        "description": "De ultieme boilerplate om een moderne webapp te starten met Next.js 15 React 19 | Supabase Auth & DB | Next-intl | Material UI Starter Kit"
+    },
+    "MetadataLogin": {
+        "title": "Inloggen Nextjs & Supabase & Next-intl & MUI",
+        "description": "Inloggen De ultieme boilerplate om een moderne webapp te starten met Next.js 15 React 19 | Supabase Auth & DB | Next-intl | Material UI Starter Kit"
     }
 }

@@ -2,19 +2,26 @@ import 'server-only'
 import SignOutButton from "@/components/buttons/SignOutButton/SignOutButton";
 import { createClient } from "@/utils/supabase/server";
 import { Paper, Stack, Typography } from "@mui/material";
-import { getLocale, getMessages, getTranslations } from "next-intl/server";
-import { Locale } from '@/utils/next-intl/routing';
+import { getTranslations } from "next-intl/server";
+// import { Locale } from '@/utils/next-intl/routing';
+// import { Metadata, ResolvingMetadata } from 'next';
 
-export async function generateMetadata() {
-    const locale = await getLocale() as Locale;
-    const messages: any = await getMessages({ locale });
-    const title = messages.NavbarLinks.HomeTitle;
+// type Props = {
+//     params: {
+//         locale: string
+//     };
+// };
 
-    return {
-        title,
-        description: title,
-    };
-}
+// export async function generateMetadata(
+//     { params }: Props,
+// ): Promise<Metadata> {
+//     const locale = (await params).locale;
+//     const t = await getTranslations({ locale, namespace: 'MetadataMain' });
+//     return {
+//         title: t('title'),
+//         description: t('description')
+//     };
+// }
 
 export default async function Home() {
     const supabase = await createClient();
@@ -47,9 +54,13 @@ export default async function Home() {
                     <Typography variant="h4" component="h1">
                         <strong>{t("welcome")}</strong>👋
                     </Typography>
-                    {!user && <Typography variant="subtitle1">Log in or Sign in to continue.</Typography>}
-                    {user ? <Typography variant="subtitle1">You are signed in {user.email}. Browse protected routes.</Typography> : null}
-                    {user ? <SignOutButton /> : null}
+                    {!user && <Typography variant="subtitle1">{t("notLoggedMessage")}</Typography>}
+                    {user ?
+                        <>
+                            <Typography variant="subtitle1">{t('signedInAs')} {user.email} {t('browseRoutes')} </Typography>
+                            <SignOutButton />
+                        </>
+                        : null}
                 </Stack>
             </Paper>
         </Paper>

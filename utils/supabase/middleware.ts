@@ -1,77 +1,58 @@
 import {createServerClient} from '@supabase/ssr';
 import {NextResponse, type NextRequest} from 'next/server';
-import {redirect} from '../next-intl/routing';
-import {getLocale} from 'next-intl/server';
+import {routing} from '../next-intl/routing';
+import allUnprotectedRoutes from './unprotectedRoutes';
 
-export async function updateSession(request: NextRequest) {
-    let supabaseResponse = NextResponse.next({
-        request,
-    });
+export async function updateSession(
+    request: NextRequest,
+    response: NextResponse
+) {
+    try {
+        const supabase = createServerClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL!,
+            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+            {
+                cookies: {
+                    getAll() {
+                        return request.cookies.getAll();
+                    },
+                    setAll(cookiesToSet) {
+                        cookiesToSet.forEach(({name, value}) =>
+                            request.cookies.set(name, value)
+                        );
+                        cookiesToSet.forEach(({name, value, options}) =>
+                            response.cookies.set(name, value, options)
+                        );
+                    },
+                },
+            }
+        );
 
-    const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        {
-            cookies: {
-                getAll() {
-                    return request.cookies.getAll();
-                },
-                setAll(cookiesToSet) {
-                    cookiesToSet.forEach(({name, value, options}) =>
-                        request.cookies.set(name, value)
-                    );
-                    supabaseResponse = NextResponse.next({
-                        request,
-                    });
-                    cookiesToSet.forEach(({name, value, options}) =>
-                        supabaseResponse.cookies.set(name, value, options)
-                    );
-                },
-            },
+        const user = await supabase.auth.getUser();
+
+        const {pathname} = request.nextUrl;
+        const currentLocale = request.cookies.get('NEXT_LOCALE')?.value;
+
+        const isUnprotectedRoute = allUnprotectedRoutes.includes(pathname);
+
+        if (isUnprotectedRoute) return response;
+
+        if (user.error && !isUnprotectedRoute) {
+            const redirectUrl = currentLocale
+                ? `/${currentLocale}/login`
+                : '/login';
+            return NextResponse.redirect(new URL(redirectUrl, request.url));
         }
-    );
 
-    // IMPORTANT: Avoid writing any logic between createServerClient and
-    // supabase.auth.getUser(). A simple mistake could make it very hard to debug
-    // issues with users being randomly logged out.
-
-    const {
-        data: {user},
-    } = await supabase.auth.getUser();
-
-    // the list of unprotected routes
-    const locale = await getLocale();
-    const pathnameWithoutLocale = request.nextUrl.pathname.replace(
-        `/${locale}`,
-        ''
-    );
-
-    if (
-        !user &&
-        !pathnameWithoutLocale.startsWith('/') &&
-        !pathnameWithoutLocale.startsWith('/login') &&
-        !pathnameWithoutLocale.startsWith('/sign-up')
-    ) {
-        return redirect({
-            href: {
-                pathname: `/login`,
+        return response;
+    } catch (e) {
+        // If you are here, a Supabase client could not be created!
+        // This is likely because you have not set up environment variables.
+        // Check out http://localhost:3000 for Next Steps.
+        return NextResponse.next({
+            request: {
+                headers: request.headers,
             },
-            locale,
         });
     }
-
-    // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
-    // creating a new response object with NextResponse.next() make sure to:
-    // 1. Pass the request in it, like so:
-    //    const myNewResponse = NextResponse.next({ request })
-    // 2. Copy over the cookies, like so:
-    //    myNewResponse.cookies.setAll(supabaseResponse.cookies.getAll())
-    // 3. Change the myNewResponse object to fit your needs, but avoid changing
-    //    the cookies!
-    // 4. Finally:
-    //    return myNewResponse
-    // If this is not done, you may be causing the browser and server to go out
-    // of sync and terminate the user's session prematurely!
-
-    return supabaseResponse;
 }

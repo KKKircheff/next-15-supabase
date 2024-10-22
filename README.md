@@ -74,6 +74,12 @@ npm install next-intl@canary  --legacy-peer-deps
 // repo https://github.com/umairjameel321/next15-intl-i18n/blob/main/app/%5Blocale%5D/page.tsx
 
 ## Latest Supabase with NextJs Auth changes on:
+      /* important Supabase middleware
+      https://github.com/vercel/next.js/blob/canary/examples/with-supabase/utils/supabase/middleware.ts
+      
+      /* important Supabase with Next-intl 
+        https://next-intl-docs.vercel.app/docs/routing/middleware
+
         /* https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware&queryGroups=package-manager&package-manager=pnpm
         /* then run dev server in new terminal with 'npm run dev' - Ready!!!      
 
@@ -90,4 +96,6 @@ https://github.com/mui/material-ui/tree/master/examples/joy-ui-nextjs-ts
 https://zod.dev/
 
 https://www.youtube.com/watch?v=2Jh9olZXBfw
+
+https://next-intl-docs.vercel.app/docs/routing/middleware
 
