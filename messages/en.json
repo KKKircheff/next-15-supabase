@@ -10,7 +10,10 @@
         "ProtectedTitle": "Protected"
     },
     "Home": {
-        "welcome": "Welcome"
+        "welcome": "Welcome",
+        "signedInAs": "You are signed in ",
+        "browseRoutes": " Browse protected routes.",
+        "notLoggedMessage": "Log in or Sign in to continue."
     },
     "SignUp": {
         "title": "Hey"
@@ -19,7 +22,8 @@
         "title": "Profile"
     },
     "Protected": {
-        "title": "Hey"
+        "title": "Hey",
+        "pageHeroTitle": "This is a protected page that you can only see as an authenticated user"
     },
     "MetadataMain": {
         "title": "Nextjs & Supabase & Next-intl & MUI",

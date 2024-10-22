@@ -54,10 +54,10 @@ export default async function Home() {
                     <Typography variant="h4" component="h1">
                         <strong>{t("welcome")}</strong>👋
                     </Typography>
-                    {!user && <Typography variant="subtitle1">Log in or Sign in to continue.</Typography>}
+                    {!user && <Typography variant="subtitle1">{t("notLoggedMessage")}</Typography>}
                     {user ?
                         <>
-                            <Typography variant="subtitle1">You are signed in {user.email}. Browse protected routes.</Typography>
+                            <Typography variant="subtitle1">{t('signedInAs')} {user.email} {t('browseRoutes')} </Typography>
                             <SignOutButton />
                         </>
                         : null}

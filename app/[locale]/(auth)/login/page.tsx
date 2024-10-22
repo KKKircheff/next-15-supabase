@@ -9,7 +9,6 @@ import { getTranslations } from 'next-intl/server';
 
 type Props = {
     params: { locale: Locale };
-    // searchParams: Promise<{ message: string }> & { [key: string]: string | string[] | undefined }
     searchParams: Promise<{ message: string }> & { [key: string]: string | string[] | undefined }
 };
 
@@ -19,7 +18,6 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const { locale } = await params;
     const { message } = await searchParams;
-    console.log('message:', message)
     const t = await getTranslations({ locale, namespace: 'MetadataLogin' });
     return {
         title: t('title'),
