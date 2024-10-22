@@ -14,5 +14,4 @@ const allUnprotectedRoutes = locales.flatMap((locale) => {
 });
 
 allUnprotectedRoutes.push(...publicRoutes);
-console.log(allUnprotectedRoutes);
 export default allUnprotectedRoutes;
