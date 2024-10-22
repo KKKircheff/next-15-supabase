@@ -28,10 +28,10 @@
     },
     "MetadataMain": {
         "title": "Nextjs & Supabase & Next-intl & MUI",
-        "description": "De ultieme boilerplate om een moderne webapp te starten met Next.js 15 React 19 | Supabase Auth & DB | Next-intl | Material UI Starter Kit"
+        "description": "De ultieme boilerplate voor moderne webapps: Nextjs_15 | React_19 | Supabase Auth & DB | Next-intl & MUI"
     },
     "MetadataLogin": {
         "title": "Inloggen Nextjs & Supabase & Next-intl & MUI",
-        "description": "Inloggen De ultieme boilerplate om een moderne webapp te starten met Next.js 15 React 19 | Supabase Auth & DB | Next-intl | Material UI Starter Kit"
+        "description": "Inloggen De ultieme boilerplate voor moderne webapps: Nextjs_15 | React_19 | Supabase Auth & DB | Next-intl & MUI"
     }
 }

@@ -7,17 +7,17 @@ import { ReactNode } from 'react';
 import { Metadata, ResolvingMetadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-type Props = {
-    params: { locale: Locale };
-    searchParams: Promise<{ message: string }> & { [key: string]: string | string[] | undefined }
-};
+type Params = Promise<{ locale: Locale }>
+type SearchParams = Promise<{
+    [key: string]: string | string[] | undefined;
+    message?: string;
+}>;
 
-export async function generateMetadata(
-    { params, searchParams }: Props,
-    parent: ResolvingMetadata
-): Promise<Metadata> {
-    const { locale } = await params;
-    const { message } = await searchParams;
+export async function generateMetadata(props: {
+    params: Params
+    searchParams: SearchParams
+}) {
+    const { locale } = await props.params
     const t = await getTranslations({ locale, namespace: 'MetadataLogin' });
     return {
         title: t('title'),
@@ -25,11 +25,12 @@ export async function generateMetadata(
     };
 }
 
+export default async function Login(props: {
+    params: Params
+    searchParams: SearchParams
+}) {
 
-export default async function Login(
-    props: Props
-) {
-    const searchParams = await props.searchParams;
+    const { message } = await props.searchParams
 
     return (
         <Stack>
@@ -75,9 +76,9 @@ export default async function Login(
                         >
                             Log In
                         </SubmitButton>
-                        {searchParams?.message && (
+                        {message && (
                             <p style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'rgba(31, 41, 55, 0.1)', color: 'currentColor', textAlign: 'center' }}>
-                                {searchParams.message}
+                                {message}
                             </p>
                         )}
                         <Typography

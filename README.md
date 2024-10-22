@@ -4,7 +4,13 @@
 
 ## installation commands
 
-npm create next-app@rc --turbo
+npm create next-app@rc --turbo 
+    or
+# Use the new automated upgrade CLI
+npx @next/codemod@canary upgrade latest 
+# ...or upgrade manually
+npm install next@canary react@rc react-dom@rc 
+ 
 npm install babel-plugin-react-compiler
 npm install server-only
     /* ensures component is a server component - error if not
@@ -12,6 +18,7 @@ npm install server-only
 
 npm install supabase --save-dev 
 npx supabase init
+
 /* npx supabase@beta start
             /* start containers in Docker - *temp* working version otherwise crash *-fixed use normal command*
 
@@ -70,8 +77,10 @@ npm install @mui/material-nextjs @emotion/cache --legacy-peer-deps
 npm install @fontsource/roboto --legacy-peer-deps
 
 npm install next-intl@canary  --legacy-peer-deps
-// the video for next 15 with next-intl https://www.youtube.com/watch?v=2Jh9olZXBfw
-// repo https://github.com/umairjameel321/next15-intl-i18n/blob/main/app/%5Blocale%5D/page.tsx
+
+
+// async metadat in nextjs 15:
+ https://nextjs.org/docs/app/building-your-application/upgrading/version-15#params--searchparams
 
 ## Latest Supabase with NextJs Auth changes on:
       /* important Supabase middleware
@@ -84,6 +93,15 @@ npm install next-intl@canary  --legacy-peer-deps
         /* then run dev server in new terminal with 'npm run dev' - Ready!!!      
 
 ## UseFull Links:
+
+// the video for next 15 with next-intl
+ https://www.youtube.com/watch?v=2Jh9olZXBfw
+
+// async metadat in nextjs 15:
+ https://nextjs.org/docs/app/building-your-application/upgrading/version-15#params--searchparams
+
+// repo
+ https://github.com/umairjameel321/next15-intl-i18n/blob/main/app/%5Blocale%5D/page.tsx
 
 https://blog.logrocket.com/structure-scalable-next-js-project-architecture/
 
