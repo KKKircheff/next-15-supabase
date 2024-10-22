@@ -6,6 +6,8 @@ import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
 import { getLocale } from "next-intl/server";
 import { redirect } from "@/utils/next-intl/routing";
 
+
+
 export default async function ProtectedPage() {
     const supabase = await createClient();
     const locale = await getLocale();

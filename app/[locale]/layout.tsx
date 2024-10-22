@@ -1,27 +1,31 @@
 import { ReactNode } from "react";
 import "../globals.css";
+
 import ThemeRegistry from '@/utils/mui/ThemeRegistry';
-import { getTranslations, getMessages } from "next-intl/server";
+
 import { NextIntlClientProvider } from "next-intl"
-import Navbar from '@/components/ui/Navbar';
+import { getTranslations, getMessages } from "next-intl/server";
 import { Locale, routing } from '@/utils/next-intl/routing';
 
+import Navbar from '@/components/ui/Navbar';
+
+import type { Metadata, ResolvingMetadata } from 'next'
 
 type Props = {
     children: ReactNode;
     params: { locale: Locale };
+    searchParams?: { [key: string]: string | string[] | undefined }
 };
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({
-    params
-}: Omit<Props, 'children'>) {
+export async function generateMetadata(
+    { params, searchParams }: Omit<Props, 'children'>,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
     const { locale } = await params;
-    // Optionally integrate with static rendering in the 
-    // Metadata API by passing an explicit locale.
     const t = await getTranslations({ locale, namespace: 'MetadataMain' });
     return {
         title: t('title'),
@@ -31,10 +35,7 @@ export async function generateMetadata({
 
 
 export default async function LocaleLayout(
-    props: Readonly<{
-        children: React.ReactNode;
-        params: { locale: Locale };
-    }>
+    props: Props
 ) {
     const params = await props.params;
     const messages = await getMessages();

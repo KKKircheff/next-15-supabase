@@ -1,7 +1,7 @@
 import {createServerClient} from '@supabase/ssr';
 import {NextResponse, type NextRequest} from 'next/server';
 import {routing} from '../next-intl/routing';
-import {unprotectedRoutes} from './unprotectedRoutes';
+import allUnprotectedRoutes from './unprotectedRoutes';
 
 export async function updateSession(
     request: NextRequest,
@@ -30,25 +30,18 @@ export async function updateSession(
 
         const user = await supabase.auth.getUser();
 
-        const {locales} = routing;
         const {pathname} = request.nextUrl;
+        const currentLocale = request.cookies.get('NEXT_LOCALE')?.value;
 
-        const isUnprotectedRoute = unprotectedRoutes.some((route) => {
-            return (
-                locales.some(
-                    (locale) =>
-                        pathname === `/${locale}${route}` ||
-                        (route === '/' && pathname === `/${locale}`)
-                ) || pathname === route
-            );
-        });
+        const isUnprotectedRoute = allUnprotectedRoutes.includes(pathname);
 
-        if (isUnprotectedRoute) {
-            return response;
-        }
+        if (isUnprotectedRoute) return response;
 
         if (user.error && !isUnprotectedRoute) {
-            return NextResponse.redirect(new URL('/login', request.url));
+            const redirectUrl = currentLocale
+                ? `/${currentLocale}/login`
+                : '/login';
+            return NextResponse.redirect(new URL(redirectUrl, request.url));
         }
 
         return response;
