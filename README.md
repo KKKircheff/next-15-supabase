@@ -1,4 +1,4 @@
-# Next.js 15 Project Setup Guide
+# Next.js 15 / React 19 / Supabase / Material UI / Next-Intl Project Setup Guide
 A comprehensive guide for setting up a modern web application with Next.js 15, React 19, Supabase, Next-intl, and Material-UI.
 
 ## Main points you can explore:
