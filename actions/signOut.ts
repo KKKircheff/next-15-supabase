@@ -9,22 +9,18 @@ export const signOut = async () => {
     const locale = (await getLocale()) as Locale;
     let errorMessage = '';
 
-    try {
-        const {
-            data: {user},
-        } = await supabase.auth.getUser();
-        if (!user) {
-            errorMessage = 'Not a logged user';
-        } else {
-            const {error} = await supabase.auth.signOut();
-            errorMessage = !error
-                ? 'Successfuly signed out'
-                : 'Can not sign-out user!';
-        }
-    } catch (error) {
-        errorMessage = 'Internal Server Error';
-        console.error(error);
+    const {data: user, error} = await supabase.auth.getUser();
+
+    if (error) {
+        errorMessage = error.message;
+    } else {
+        const {error} = await supabase.auth.signOut();
+        errorMessage = !error
+            ? 'Successfuly signed out'
+            : 'Can not sign-out user!';
     }
+
+    errorMessage = 'Internal Server Error';
 
     return redirect({
         href: {

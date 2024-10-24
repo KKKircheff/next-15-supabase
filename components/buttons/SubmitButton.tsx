@@ -1,20 +1,16 @@
 "use client";
 
-import { useFormStatus } from "react-dom";
-import { type ComponentProps } from "react";
+
 import { Button, ButtonProps } from "@mui/material";
 
 type Props = ButtonProps<"button"> & {
+    isPending: boolean;
     pendingText?: string;
 };
 
-export function SubmitButton({ children, pendingText, ...props }: Props) {
-    const { pending, action } = useFormStatus();
-
-    const isPending = pending && action === props.formAction;
-
+export function SubmitButton({ children, isPending, pendingText, ...props }: Props) {
     return (
-        <Button {...props} type="submit" disabled={pending} aria-disabled={pending}>
+        <Button {...props} type="submit" disabled={isPending} aria-disabled={isPending}>
             {isPending ? pendingText : children}
         </Button>
     );
